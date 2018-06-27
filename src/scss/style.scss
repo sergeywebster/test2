@@ -10,7 +10,7 @@ body {
 //colors
 $color_nevada_approx: #5c6d78;
 $white: #fff;
-$color_text_button: #d9d8d8;
+$color_text_button: #b3b5b7;
 $color_button: #676666;
 
 a {
@@ -28,32 +28,16 @@ a {
 .hidden {
 	display: none!important;
 }
-.navbar {
-	position: absolute;
-	padding: 0 75px 0 0;
-	background: $color_nevada_approx;
-	border: none;
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 0;
-	width: 100%;
-	height: 70px;
-	z-index: 10;
-	display: none;
-}
-.burger {
-	background: none;
-	border: none;
-	margin: 20px 0 0 20px;
-	i {
-		color: $white;
-		font-size: 28px;
-	}
-}
-.wrapper {
+
+
+
+.main-page {
 	display: flex;
 	width: 100%;
 }
-#sidebar {
+
+
+.main-page__sidebar {
 	width: 250px;
 	position: fixed;
 	top: 0;
@@ -67,7 +51,9 @@ a {
 		margin-left: -250px;
 	}
 }
-.logo {
+
+
+.main-logo {
 	display: block;
 	position: relative;
 	background: $white;
@@ -80,7 +66,47 @@ a {
 		padding: 20px;
 	}
 }
-#content {
+
+.main-head__close {
+	display: none;
+}
+
+.list, .list-sub {
+	list-style: none;
+	padding: 0px;
+}
+
+.list__item {
+	padding: 0 68px;
+}	
+
+.list__item:first-child .list__link{
+	border-top: 1px solid $white;
+}	
+		
+.list__link {
+		padding: 10px 0;
+		font-size: 1.1em;
+		display: block;
+		font-weight: 300;
+		border-bottom: 1px solid $white;			
+		&:hover {
+			color: $color_text_button;
+		}
+}
+
+.list__link_sub {
+		font-size: 10px;
+		padding: 10px 0 0;
+		border: 0!important;
+}
+
+.list__link_active {
+	    color: $color_text_button;
+}
+
+
+.main-page__content {
 	width: calc(100% - 250px);
 	min-height: 100vh;
 	transition: all 0.3s;
@@ -91,45 +117,96 @@ a {
 		width: 100%;
 	}
 }
-.homeimage {
-	position: relative;
-	.more {
-		position: absolute;
-		margin: 0 auto;
-		left: 0;
-		right: 0;
-		top: 50%;
-		text-align: center;
+
+
+
+.main-navbar {
+	position: absolute;
+	padding: 0 75px 0 0;
+	background: $color_nevada_approx;
+	border: none;
+	border-radius: 0;
+	width: 100%;
+	height: 70px;
+	z-index: 10;
+	display: none;
+}
+
+
+.main-navbar__logo {
+	display: none;
+}
+
+.main-navbar__burger {
+	background: none;
+	border: none;
+	margin: 20px 0 0 20px;
+	i {
+		color: $white;
+		font-size: 28px;
 	}
 }
-.button {
+
+
+
+
+.main-homeimage {
+	position: relative;
+}
+
+.more-homeimage__link {
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: 50%;
+	text-align: center;
+}
+
+
+.homeimage__link {
 	display: inline-block;
 	padding: 9px 45px;
 	font-size: 13px;
+	background: $color_button;
+	color: $color_text_button!important;
 	transition: all 0.3s;
 	&:hover {
 		opacity: 0.9;
 	}
 }
-.button-common {
-	background: $color_button;
-	color: $color_text_button!important;
-}
-.hometext {
+
+
+.main-container__hometext {
 	padding: 45px 0;
-	h2 {
-		font-size: 21px;
-		font-weight: 400;
-	}
 	p {
 		font-size: 14px;
 	}
 }
-.close_sidebar {
-	display: none;
+
+.main-title {
+	font-size: 21px;
+	font-weight: 400;
 }
+
+
+.main-product {
+	margin-bottom: 20px;
+}
+
+.card-more {
+	text-align: right;
+}
+
+.card-img-top {
+    height: 253px;
+    background-size: cover!important;
+    background-position: center!important;
+}
+
+
 @media(max-width: 768px) {
-	#sidebar {
+	.main-page__sidebar {
 		margin-left: -300px;
 		opacity: 0.98;
 		padding-right: 0;
@@ -138,19 +215,21 @@ a {
 			margin-left: 0;
 		}
 	}
-	#content {
+	.main-page__content {
 		width: 100%;
 		&.active {
 			position: fixed;
 		}
 	}
-	#sidebarCollapse {
+
+	.main-navbar__burger {
 		float: left;
 		span {
 			display: none;
 		}
 	}
-	.close_sidebar {
+
+	.main-head__close {
 		display: block;
 		position: absolute;
 		right: 10px;
@@ -161,62 +240,33 @@ a {
 			width: 30px;
 		}
 	}
-	.navbar {
+
+	.main-navbar {
 		display: block;
-		.logo {
-			float: left;
-		}
 	}
-	.logo {
+
+    .main-navbar__logo {
+        float: left;
+        display: block;
+    }
+
+	.main-logo {
 		width: 80%;
 		max-width: 240px;
 	}
-	.homeimage {
-		.more {
-			display: none;
-		}
-		img {
+
+
+	.main-homeimage__img {
 			width: 100vw;
 			height: 30vh;
 			object-fit: cover;
-		}
 	}
-	nav ul li {
+
+
+	.list__item {
 		padding: 0 93px;
 	}
 }
-nav ul {
-	li {
-		padding: 0 68px;
-		a {
-			padding: 10px 0;
-			font-size: 1.1em;
-			display: block;
-			font-weight: 300;
-			border-top: 1px solid $white;
-			&:hover {
-				color: $color_text_button;
-			}
-		}
-		&:last-child a {
-			border-bottom: 1px solid $white;
-		}
-	}
-	ul {
-		li {
-			padding: 0;
-		}
-		a {
-			font-size: 10px;
-			padding: 10px 0 0;
-			border: 0!important;
-		}
-	}
-}
-.homecatalog .list_item {
-	margin-bottom: 20px;
-	.more {
-		text-align: right;
-	}
-}
+
+
 
